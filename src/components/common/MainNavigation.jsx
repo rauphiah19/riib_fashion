@@ -14,6 +14,7 @@ export default function MainNavigation() {
     { label: 'Home', path: '/home' },
     { label: 'Collections', path: '/collections' },
     { label: 'About', path: '/about-riib' },
+    { label: 'Size Guide', path: '/size-and-fit-guide' },
     { label: 'Contact', path: '/contact' }
   ];
 
