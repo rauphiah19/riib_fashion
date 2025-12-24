@@ -1,0 +1,148 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+local_backend: true
+
+collections:
+  # Products Collection
+  - name: "products"
+    label: "Products"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product Name", name: "name", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price (NGN)", name: "price", widget: "number" }
+      - { label: "Original Price (NGN)", name: "originalPrice", widget: "number", required: false }
+      - { label: "Product Image", name: "image", widget: "image" }
+      - { label: "Image Alt Text", name: "alt", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Hijabs", value: "hijabs" }
+          - { label: "Ready to Wear", value: "ready-to-wear" }
+          - { label: "Accessories", value: "accessories" }
+      - label: "Badge"
+        name: "badge"
+        widget: "select"
+        required: false
+        options:
+          - { label: "None", value: "" }
+          - { label: "New", value: "New" }
+          - { label: "Sale", value: "Sale" }
+          - { label: "Best Seller", value: "Best Seller" }
+      - { label: "Featured Product", name: "featured", widget: "boolean", default: false }
+      - { label: "Date Added", name: "dateAdded", widget: "datetime", default: "" }
+      - { label: "In Stock", name: "inStock", widget: "boolean", default: true }
+      - { label: "SKU", name: "sku", widget: "string", required: false }
+
+  # Collections/Categories
+  - name: "collections"
+    label: "Collections"
+    folder: "content/collections"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Collection Name", name: "name", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Collection Image", name: "image", widget: "image" }
+      - { label: "Image Alt Text", name: "alt", widget: "string" }
+      - { label: "Featured Collection", name: "featured", widget: "boolean", default: false }
+      - { label: "Display Order", name: "order", widget: "number", default: 0 }
+
+  # Homepage Content
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - label: "Hero Section"
+        name: "hero"
+        file: "content/homepage/hero.json"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Subheadline", name: "subheadline", widget: "text" }
+          - { label: "CTA Text", name: "ctaText", widget: "string" }
+          - { label: "CTA Link", name: "ctaLink", widget: "string" }
+          - { label: "Hero Image", name: "image", widget: "image" }
+          - { label: "Image Alt Text", name: "alt", widget: "string" }
+      - label: "Featured Collections"
+        name: "featured-collections"
+        file: "content/homepage/featured-collections.json"
+        fields:
+          - { label: "Section Title", name: "title", widget: "string" }
+          - { label: "Section Description", name: "description", widget: "text" }
+          - label: "Collections"
+            name: "collections"
+            widget: "list"
+            fields:
+              - { label: "Collection ID", name: "id", widget: "string" }
+      - label: "Brand Story Teaser"
+        name: "brand-story"
+        file: "content/homepage/brand-story.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "content", widget: "markdown" }
+          - { label: "CTA Text", name: "ctaText", widget: "string" }
+          - { label: "CTA Link", name: "ctaLink", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Image Alt Text", name: "alt", widget: "string" }
+
+  # About Page
+  - name: "about"
+    label: "About Page"
+    files:
+      - label: "Brand Story"
+        name: "brand-story"
+        file: "content/about/brand-story.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "content", widget: "markdown" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Image Alt Text", name: "alt", widget: "string" }
+      - label: "Founder Story"
+        name: "founder-story"
+        file: "content/about/founder-story.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Founder Name", name: "founderName", widget: "string" }
+          - { label: "Story", name: "story", widget: "markdown" }
+          - { label: "Founder Image", name: "image", widget: "image" }
+          - { label: "Image Alt Text", name: "alt", widget: "string" }
+      - label: "Values & Craftsmanship"
+        name: "values"
+        file: "content/about/values.json"
+        fields:
+          - { label: "Craftsmanship Title", name: "craftsmanshipTitle", widget: "string" }
+          - { label: "Craftsmanship Content", name: "craftsmanshipContent", widget: "markdown" }
+          - { label: "Quality Title", name: "qualityTitle", widget: "string" }
+          - { label: "Quality Content", name: "qualityContent", widget: "markdown" }
+
+  # Site Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Contact Information"
+        name: "contact"
+        file: "content/settings/contact.json"
+        fields:
+          - { label: "WhatsApp Number", name: "whatsapp", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Business Address", name: "address", widget: "text" }
+          - { label: "CAC Registration", name: "cacRegistration", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+          - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
+          - { label: "Twitter URL", name: "twitter", widget: "string", required: false }
+      - label: "General Settings"
+        name: "general"
+        file: "content/settings/general.json"
+        fields:
+          - { label: "Site Title", name: "siteTitle", widget: "string" }
+          - { label: "Site Description", name: "siteDescription", widget: "text" }
+          - { label: "Currency", name: "currency", widget: "string", default: "NGN" }
+          - { label: "Shipping Info", name: "shippingInfo", widget: "text" }
+          - { label: "Return Policy", name: "returnPolicy", widget: "markdown" }

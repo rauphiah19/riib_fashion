@@ -15,7 +15,8 @@ export default function MainNavigation() {
     { label: 'Collections', path: '/collections' },
     { label: 'About', path: '/about-riib' },
     { label: 'Size Guide', path: '/size-and-fit-guide' },
-    { label: 'Contact', path: '/contact' }
+    { label: 'Contact', path: '/contact' },
+    { label: 'CMS Admin', path: '/cms-admin-dashboard' }
   ];
 
   useEffect(() => {
